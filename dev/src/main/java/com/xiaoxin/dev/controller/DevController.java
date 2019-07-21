@@ -1,7 +1,10 @@
 package com.xiaoxin.dev.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.xiaoxin.dev.service.DevService;
 
 /** 
  * @author liangluxin 
@@ -11,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DevController {
 
+	@Autowired
+	private DevService devService;
+	
 	@GetMapping("/test")
 	public String test(){
-		return "hello，springboot";
+		return devService.saveTest();
+		//return "hello，springboot";
 	}
 }
