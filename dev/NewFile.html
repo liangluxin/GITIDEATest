@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证页面</title>
+</head>
+<body>
+
+<!--<div align="center" >
+    <img src="./image/333.png" align="top" />
+<textarea  type="text" size="50" readonly="readonly" style="resize:none; height: 86px;width: 380px;" >
+本次操作涉及公司客户信息、隐私等敏感数据，必须按照国家
+《网络安全法》、《个人信息安全规范》和公司安全管理要求严
+格保密。只用于工作用途，不得随意复制、转发或向外部传播，
+做好数据奥冠工作并及时核销。如有泄漏、出售或者非法向他人
+提供客户信息、隐私的行为，将追究法律责任。
+</textarea>
+</div>-->
+<!--http://www.bccn.net/paste/2023/ 全-->
+<br>
+<br>
+<form>
+<div align="center">
+    <img src="./image/111.png" align="top" />
+    <textarea  type="text" size="50" readonly="readonly" style="resize:none; height: 96px;width: 380px;" >
+本次操作涉及公司客户信息、隐私等敏感数据，必须按照国家
+《网络安全法》、《个人信息安全规范》和公司安全管理要求严
+格保密。只用于工作用途，不得随意复制、转发或向外部传播，
+做好数据奥冠工作并及时核销。如有泄漏、出售或者非法向他人
+提供客户信息、隐私的行为，将追究法律责任。
+</textarea>
+    <br/>
+    <br/>
+
+       手机号：
+           <input size="30" type = "text" name="phone" id="phone1" value="" style="border:0;outline:0;">
+       <br/>
+    <div style="width:300px; height:2px;background-color:#2c64b1"></div>
+    <br/>
+        <div >图形验证码：
+            <input size="26" name="picCode" id="picCode" value="" type = "text" style="border:0;outline:0;" >
+           <!-- <img width="90px" src="./image/captcha.jhtml" id="pic0">-->
+        </div>
+        <div style="width:300px; height:2px;background-color:#2c64b1"></div>
+<br>
+    <div>
+        手机验证码：
+        <input size="12" type = "text" name="verCode" id="verCode" value="" style="border:0;outline:0;" >
+        <input type="button" name="" id="verCodeBtn" value="获取验证码"  onclick="sendMessage1()"/>
+        <div style="width:300px; height:2px;background-color:#2c64b1"></div>
+    </div>
+    <br>
+    <input type="button" value="确认"  onclick="binding()"/>
+</div>
+
+</form>
+</body>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+    var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;//手机号正则
+    var count = 60;//间隔
+    var timer1;//timer变量 控制时间
+    var curCount1;//剩余时间
+    function sendMessage1() {
+        cunCount1 = count;
+        var phone= $.trim($('#phone1').val());
+        var sms="";
+        if(!phoneReg.test(phone)){
+            alert("请输入有效手机号");
+            return false;
+        }
+       /* if(phone1!=" "){
+            $.ajax({
+                url:"sendMS",
+                type:"post",
+                data:{"phone1":phone1},
+                success:function (result) {
+                    sms = result;
+                }
+            });
+        }*/
+        //设置button效果，开始计时
+        $("verCodeBtn").attr("diabled","true");
+        $("verCodeBtn").val(+curCount1+"s");
+        //启动计时器，1秒执行一次
+        timer1 = window.setInterval(SetRemainTime1,1000);
+    }
+    function SetRemainTime1(){
+        if(curCount1==0){
+            window.clearInterval(timer1);//停止计时器
+            $("#verCodeBtn").removeAttr("disabled");//再次启动计时器
+            $("#verCodeBtn").val("重新发送");
+        }else{
+            curCount1--;
+            $("#verCodeBtn").val(+curCount1+"m");
+        }
+    }
+    //提交
+    function binding() {
+        alert(1);
+    }
+
+</script>
+
+</html>
