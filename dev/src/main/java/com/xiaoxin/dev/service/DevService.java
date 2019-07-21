@@ -11,4 +11,8 @@ public interface DevService {
 	 * @return 
 	 */
 	public String saveTest();
+	/**
+	 * test1接口
+	 */
+	public String test1();
 }

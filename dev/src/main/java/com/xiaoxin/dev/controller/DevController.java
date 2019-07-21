@@ -22,4 +22,10 @@ public class DevController {
 		return devService.saveTest();
 		//return "hello，springboot";
 	}
+	@GetMapping("/test1")
+	public String test1(){
+		String t = devService.test1();
+		System.out.println("t:"+t);
+		 return "hello,github!";
+	}
 }

@@ -14,4 +14,9 @@ public class DevServiceImpl implements DevService {
 		return "true";
 	}
 
+	@Override
+	public String test1() {
+		return "hello，github！";
+	}
+
 }
